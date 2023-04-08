@@ -3,6 +3,7 @@
 
 int _putchar(char c);
 int _atoi(char *s);
+int my_atoi(char *str)
 
 
 #endif
