@@ -3,6 +3,22 @@
 #include "main.h"
 
 /**
+ * my_atoi - converts a string to an integer
+ * @str: the string to convert
+ *
+ * Return: the converted integer
+ */
+int my_atoi(char *str)
+{
+	int res = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i)
+		res = res * 10 + str[i] - '0';
+
+	return (res);
+}
+
+/**
  * main - prints the minimum number of coins to
  * make change for an amount of money
  * @argc: number of arguments
@@ -22,7 +38,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	cents = atoi(argv[1]);
+	cents = my_atoi(argv[1]);
 	result = 0;
 
 	if (cents < 0)

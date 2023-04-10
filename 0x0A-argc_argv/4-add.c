@@ -7,45 +7,34 @@
  * @argc: number of arguments
  * @argv: array of arguents
  *
- * Return: 0 (Success), or 1 (Success)
+ * Return: 0 (Success), or 1 (error)
  */
 
-int is_digit(char c)
+int main(int argc, char *argv[])
 {
+	int sum = 0, num;
+	char *ptr;
+
+	if (argc < 2)
 	{
-		return (c >= '0' && c <= '9');
+		printf("0\n");
+		return (0);
 	}
-	
-	int main(int argc, char *argv[])
+
+	for (int i = 1; i < argc; i++)
 	{
-		int sum = 0;
-
-		if (argc == 1)
+		num = strtol(argv[i], &ptr, 10);
+		if (*ptr != '\0')
 		{
-			printf("0\n");
-			return (0);
+			printf("Error\n");
+			return (1);
 		}
-		for (int i = 1; i < argc; i++)
+		if (num < 0)
 		{
-			int j = 0;
-
-			while (argv[i][j] != '\0')
-			{
-				if (!is_digit(argv[i][j]))
-				{
-					printf("Error\n");
-					return 1;
-				}
-				j++;
-
-			}
-			int num = atoi(argv[i]);
-			if (num <= 0)
-			{
-				continue;
-			}
-			sum += num;
+			printf("Error\n");
+			return (1);
 		}
+		sum += num;
 	}
 	printf("%d\n", sum);
 	return (0);
