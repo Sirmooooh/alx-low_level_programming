@@ -1,36 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
-
-/**
- * my_atoi - Converts a string to an integer
- *
- * @str: The string to convert
- *
- * Return: sign * num
- */
-
-int my_atoi(char *str)
-{
-	int num = 0;
-	int sign = 1;
-
-	if (*str == '-')
-	{
-		sign = -1;
-		str++;
-	}
-	while (*str != '\0')
-	{
-		if (*str < '0' || *str > '9')
-		{
-			printf("Error\n");
-			return (-1);
-		}
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return (sign * num);
-}
 
 /**
  * main - prints the minimum number of coins to
@@ -43,7 +13,7 @@ int my_atoi(char *str)
 
 int main(int argc, char *argv[])
 {
-	int num, j, result;
+	int cents, k, result;
 	int coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
@@ -51,22 +21,23 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	num = my_atoi(argv[1]);
+
+	cents = atoi(argv[1]);
 	result = 0;
 
-	if (num < 0)
+	if (cents < 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-	for (j = 0; j < 5 && num >= 0; j++)
+	for (k = 0; k < 5 && cents >= 0; k++)
 	{
-		while (num >= coins[j])
+		while (cents >= coins[k])
 		{
 			result++;
-			num -= coins[j];
+			cents -= coins[k];
 		}
 	}
 	printf("%d\n", result);
-	return (-1);
+	return (0);
 }
