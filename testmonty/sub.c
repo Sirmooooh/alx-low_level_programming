@@ -11,7 +11,7 @@
  *
  * Return: void
  */
-void _sub(stack_t **stack, unsigned int l_cnt)
+void sub(stack_t **stack, unsigned int l_cnt)
 {
 	int assmnt;
 

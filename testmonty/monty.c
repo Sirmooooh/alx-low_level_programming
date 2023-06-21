@@ -8,7 +8,7 @@
  *
  * Return: nothing
  */
-void err_usage(void)
+void error_usage(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
@@ -20,7 +20,7 @@ void err_usage(void)
  *
  * Return: nothing
  */
-void file_err(char *argv)
+void file_error(char *argv)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", argv);
 	exit(EXIT_FAILURE);
@@ -45,12 +45,12 @@ int main(int argc, char **argv)
 
 	global.data_struct = 1;
 	if (argc != 2)
-		err_usage();
+		error_usage();
 
 	file = fopen(argv[1], "r");
 
 	if (file == NULL)
-		file_err(argv[1]);
+		file_error(argv[1]);
 
 	while (getline(&buffer, &buf_len, file) != -1)
 	{
